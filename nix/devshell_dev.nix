@@ -8,9 +8,8 @@
 
     git.hooks = {
       enable = true;
-      commit-msg.text = ''
-        cz check --commit-msg-file $1
-      '';
+      commit-msg.text = "cz check --commit-msg-file $1";
+      pre-commit.text = "just";
     };
   });
 }
