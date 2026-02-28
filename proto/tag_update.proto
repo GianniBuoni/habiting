@@ -1,0 +1,17 @@
+syntax = "proto3";
+package habiting;
+
+import "tag.proto";
+
+message TagUpdate {
+  string target = 1;
+  string new_name = 2;
+}
+
+message TagUpdateRequest {
+  repeated TagUpdate edit_reqs = 1;
+}
+
+message TagUpdateResponse {
+  repeated Tag tags = 1;
+}

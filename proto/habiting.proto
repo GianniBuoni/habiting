@@ -1,0 +1,5 @@
+syntax = "proto3";
+package habiting;
+
+import "tag_service.proto";
+import "session_service.proto";

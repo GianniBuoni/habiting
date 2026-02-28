@@ -1,0 +1,10 @@
+syntax = "proto3";
+package habiting;
+
+import "session_start.proto";
+import "session_stop.proto";
+
+service SessionService {
+  rpc (SessionStartRequest) returns (SessionStartRespone);
+  rpc (SessionStopRequest) returns (SessionStopResponse);
+}

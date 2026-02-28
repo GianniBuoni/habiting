@@ -1,0 +1,10 @@
+syntax = "proto3";
+package habiting;
+
+message SessionStartRequest {
+  string tag = 1;
+}
+
+message SessionStartRespones {
+  string start_time = 1;
+}

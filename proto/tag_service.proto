@@ -1,0 +1,14 @@
+syntax = "proto3";
+package habiting;
+
+import "tag_create.proto";
+import "tag_list.proto";
+import "tag_update.proto";
+import "tag_delete.proto";
+
+service TagService {
+  rpc (TagCreateRequest) returns (TagCreateResponse);
+  rpc (TagListRequest) returns (TagListResponse);
+  rpc (TagUpdateRequest) returns (TagUpdateResponse);
+  rpc (TagDeleteRequest) returns (TagDeleteResposne);
+}

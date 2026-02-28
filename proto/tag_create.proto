@@ -1,0 +1,12 @@
+syntax = "proto3";
+package habiting;
+
+import "tag.proto";
+
+message TagCreateRequest {
+  repeated string name = 1;
+}
+
+message TagCreateRespones {
+  repeated Tag tags = 1;
+}

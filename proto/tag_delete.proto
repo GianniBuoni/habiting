@@ -1,0 +1,10 @@
+syntax = "proto3";
+package habiting;
+
+message TagDeleteRequest {
+  repeated name = 1;
+}
+
+message TagDeleteResponse {
+  u32 affected_rows = 1;
+}

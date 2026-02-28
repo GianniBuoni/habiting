@@ -1,0 +1,8 @@
+syntax = "proto3";
+package habiting;
+
+message SessionStopRequest {}
+
+message SessionStopResponse {
+  uint64 duration = 1;
+}
