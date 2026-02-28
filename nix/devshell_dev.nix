@@ -9,7 +9,7 @@
     git.hooks = {
       enable = true;
       commit-msg.text = ''
-        cz check $1
+        cz check --commit-msg-file $1
       '';
     };
   });
