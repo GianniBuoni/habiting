@@ -2,7 +2,6 @@
   flake.aspects.devshells.dev = moduleWithSystem ({pkgs, ...}: {
     packages = with pkgs; [
       commitizen
-      just
       rust-analyzer
     ];
 
