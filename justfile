@@ -27,3 +27,25 @@ lint package="":
 [arg("package", short="p")]
 run package="server" *ARGS:
   cargo run -p habiting-{{package}} -- {{ARGS}}
+
+@start_db:
+  if [ "$(pg_ctl status | grep "is running")" ]; then \
+    echo "PG server already running."; \
+  else \
+    pg_ctl start -l $PGDATA/logfile -o --unix_socket_directories=$PWD/$PGDATA; \
+  fi;
+
+@init_db:
+  if [ "$(pg_ctl status | grep "is running")" ]; then \
+    echo "PG server already initialized."; \
+  else \
+    mkdir -p $PGDATA; \
+    pg_ctl init; \
+    just start_db; \
+    sqlx database create; \
+    sqlx migrate run --source ./crates/habiting-server/migrations; \
+  fi;
+
+[working-directory: "crates/mathing-server"]
+prepare:
+  cargo sqlx prepare -- --all-targets

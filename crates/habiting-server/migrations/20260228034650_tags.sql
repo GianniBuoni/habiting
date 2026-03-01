@@ -1,0 +1,8 @@
+-- Up
+CREATE TABLE tags (
+    uuid UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    name TEXT NOT NULL,
+    total_minutes INT NOT NULL DEFAULT 0
+);
