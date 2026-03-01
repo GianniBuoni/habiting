@@ -1,6 +1,6 @@
 {moduleWithSystem, ...}: {
   flake.aspects.devshells.build = moduleWithSystem ({pkgs, ...}: {
-    packages = with pkgs; [grpc-tools sqlx-cli];
+    packages = with pkgs; [sqlx-cli];
 
     commands = [
       {
