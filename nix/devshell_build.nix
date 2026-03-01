@@ -1,6 +1,6 @@
 {moduleWithSystem, ...}: {
   flake.aspects.devshells.build = moduleWithSystem ({pkgs, ...}: {
-    packages = with pkgs; [sqlx-cli];
+    packages = with pkgs; [grpc-tools sqlx-cli];
 
     commands = [
       {
@@ -10,6 +10,7 @@
           cargo -V
           cargo clippy -V
           just -V
+          protoc --version
           sqlx -V
         '';
       }
