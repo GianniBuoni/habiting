@@ -7,6 +7,6 @@ message TagCreateRequest {
   repeated string name = 1;
 }
 
-message TagCreateRespones {
+message TagCreateResponse {
   repeated Tag tags = 1;
 }
