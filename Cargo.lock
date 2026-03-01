@@ -103,6 +103,11 @@ dependencies = [
 [[package]]
 name = "habiting-client"
 version = "0.1.0"
+dependencies = [
+ "prost",
+ "tonic-prost",
+ "tonic-prost-build",
+]
 
 [[package]]
 name = "habiting-server"
