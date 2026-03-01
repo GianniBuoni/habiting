@@ -7,6 +7,9 @@ use crate::prelude::{
     *,
 };
 
+mod session_start;
+mod session_stop;
+
 pub struct HabitingSessionService {}
 
 #[tonic::async_trait]
@@ -15,12 +18,12 @@ impl SessionService for HabitingSessionService {
         &self,
         req: Request<SessionStartRequest>,
     ) -> Result<Response<SessionStartResponse>, Status> {
-        todo!()
+        self.handle_start(req).await
     }
     async fn session_stop(
         &self,
         req: Request<SessionStopRequest>,
     ) -> Result<Response<SessionStopResponse>, Status> {
-        todo!()
+        self.handle_stop(req).await
     }
 }
