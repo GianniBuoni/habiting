@@ -5,6 +5,6 @@ import "session_start.proto";
 import "session_stop.proto";
 
 service SessionService {
-  rpc (SessionStartRequest) returns (SessionStartRespone);
-  rpc (SessionStopRequest) returns (SessionStopResponse);
+  rpc SessionStart (SessionStartRequest) returns (SessionStartResponse);
+  rpc SessionStop (SessionStopRequest) returns (SessionStopResponse);
 }

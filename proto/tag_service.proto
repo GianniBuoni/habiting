@@ -7,8 +7,8 @@ import "tag_update.proto";
 import "tag_delete.proto";
 
 service TagService {
-  rpc (TagCreateRequest) returns (TagCreateResponse);
-  rpc (TagListRequest) returns (TagListResponse);
-  rpc (TagUpdateRequest) returns (TagUpdateResponse);
-  rpc (TagDeleteRequest) returns (TagDeleteResposne);
+  rpc TagCreate (TagCreateRequest) returns (TagCreateResponse);
+  rpc TagList (TagListRequest) returns (TagListResponse);
+  rpc TagUpdate (TagUpdateRequest) returns (TagUpdateResponse);
+  rpc TagDelete (TagDeleteRequest) returns (TagDeleteResponse);
 }

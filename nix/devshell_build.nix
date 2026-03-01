@@ -10,6 +10,7 @@
           cargo -V
           cargo clippy -V
           just -V
+          protoc --version
           sqlx -V
         '';
       }
