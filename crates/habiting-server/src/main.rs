@@ -1,3 +1,7 @@
+use habiting_server::prelude::*;
+
 fn main() {
-    println!("Hello, world!");
+    init_logger();
+
+    info!("Hello, world!");
 }
