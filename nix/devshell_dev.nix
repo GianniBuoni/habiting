@@ -9,6 +9,7 @@
       enable = true;
       commit-msg.text = "cz check --commit-msg-file $1";
       pre-commit.text = "just lint && just";
+      pre-push.text = "git rebase origin/main";
     };
   });
 }
