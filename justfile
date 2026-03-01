@@ -17,7 +17,9 @@ test package="":
 [arg("package", short="p")]
 lint package="":
   if [ "{{package}}" = "" ]; then \
+    cargo fmt --check; \
     cargo clippy --all-targets -- -D warnings; \
   else \
+    cargo fmt --check; \
     cargo clippy -p habiting-{{package}} -- -D warnings; \
   fi
