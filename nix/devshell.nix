@@ -8,14 +8,16 @@
 
   perSystem = {self', ...}: {
     devShells.default = self'.devShells.dev;
-    devshells = {
+    devshells = with config.flake.aspects.devshells; {
       # development shell with full tooling
       dev = {extraModulesPath, ...}: {
         imports = [
           "${extraModulesPath}/language/rust.nix"
           "${extraModulesPath}/language/c.nix"
           "${extraModulesPath}/git/hooks.nix"
-          config.flake.aspects.devshells.dev
+          base
+          build
+          dev
         ];
       };
       # ci shell with only the tooling necessary for linting
@@ -23,13 +25,17 @@
         imports = [
           "${extraModulesPath}/language/rust.nix"
           "${extraModulesPath}/language/c.nix"
+          base
+          lint
         ];
       };
       # ci shell with only the tooling necessary for testing and building
-      ci = {extraModulesPath, ...}: {
+      build = {extraModulesPath, ...}: {
         imports = [
           "${extraModulesPath}/language/rust.nix"
           "${extraModulesPath}/language/c.nix"
+          base
+          build
         ];
       };
     };
