@@ -4,8 +4,26 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+env_logger = "0.11.9"
+log = "0.4.29"
 prost = {workspace = true}
+sqlx = {version = "0.8.6", features = [
+  "chrono",
+  "postgres",
+  "runtime-tokio",
+  "uuid",
+]}
+tokio = {workspace = true}
+tonic = {workspace = true}
 tonic-prost = {workspace = true}
+thiserror = {workspace = true}
+
+[dependencies.srvr_errors]
+git = "https://github.com/GianniBuoni/srvr-errors.git"
+features = ["tonic", "postgres"]
 
 [build-dependencies]
 tonic-prost-build = {workspace = true}
+
+[dev-dependencies]
+anyhow = {workspace = true}

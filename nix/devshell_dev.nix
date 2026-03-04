@@ -1,9 +1,13 @@
-{moduleWithSystem, ...}: {
+{moduleWithSystem, ...}: let
+  mkEnv = name: value: {inherit name value;};
+in {
   flake.aspects.devshells.dev = moduleWithSystem ({pkgs, ...}: {
     packages = with pkgs; [
       commitizen
       rust-analyzer
     ];
+
+    env = [(mkEnv "LOG_LEVEL" "info")];
 
     git.hooks = {
       enable = true;

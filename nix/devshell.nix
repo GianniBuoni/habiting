@@ -37,6 +37,13 @@
           base
           build
         ];
+
+        env = [
+          {
+            name = "SQLX_OFFLINE";
+            value = "true";
+          }
+        ];
       };
     };
   };
