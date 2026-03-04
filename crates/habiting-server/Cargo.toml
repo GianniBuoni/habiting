@@ -16,6 +16,7 @@ sqlx = {version = "0.8.6", features = [
 tokio = {workspace = true}
 tonic = {workspace = true}
 tonic-prost = {workspace = true}
+thiserror = {workspace = true}
 
 [dependencies.srvr_errors]
 git = "https://github.com/GianniBuoni/srvr-errors.git"
