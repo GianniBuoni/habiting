@@ -46,6 +46,6 @@ run package="server" *ARGS:
     sqlx migrate run --source ./crates/habiting-server/migrations; \
   fi;
 
-[working-directory: "crates/mathing-server"]
+[working-directory: "crates/habiting-server"]
 prepare:
   cargo sqlx prepare -- --all-targets
