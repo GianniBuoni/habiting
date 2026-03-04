@@ -1,0 +1,22 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO sessions (tag_id) SELECT uuid AS tag_id FROM tags WHERE name = $1 RETURNING created_at",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "created_at",
+        "type_info": "Timestamptz"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "22feb159dc51c8ad4dc8eda028c09bf7d255cf0764346ee0377102d8b8ad0e87"
+}

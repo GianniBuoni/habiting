@@ -2,7 +2,12 @@
   inputs,
   config,
   ...
-}: {
+}: let
+  sqlxOffline = {
+    name = "SQLX_OFFLINE";
+    value = "true";
+  };
+in {
   flake-file.inputs.devshell.url = "github:numtide/devshell";
   imports = [inputs.devshell.flakeModule];
 
@@ -28,6 +33,7 @@
           base
           lint
         ];
+        env = [sqlxOffline];
       };
       # ci shell with only the tooling necessary for testing and building
       build = {extraModulesPath, ...}: {
@@ -37,13 +43,7 @@
           base
           build
         ];
-
-        env = [
-          {
-            name = "SQLX_OFFLINE";
-            value = "true";
-          }
-        ];
+        env = [sqlxOffline];
       };
     };
   };
