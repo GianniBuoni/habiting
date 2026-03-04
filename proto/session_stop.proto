@@ -1,8 +1,11 @@
 syntax = "proto3";
 package habiting;
 
-message SessionStopRequest {}
+message SessionStopRequest {
+  string tag = 1;
+}
 
 message SessionStopResponse {
-  uint64 duration = 1;
+  string end_time = 1;
+  uint64 duration = 2;
 }
