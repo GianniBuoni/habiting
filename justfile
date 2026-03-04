@@ -9,6 +9,7 @@ build package="": (test package)
 [arg("package", short="p")]
 test package="":
   if [ "{{package}}" = "" ]; then \
+    just _init_db; \
     cargo test; \
   else \
     cargo build -p habiting-{{package}}; \
@@ -28,20 +29,19 @@ lint package="":
 run package="server" *ARGS:
   cargo run -p habiting-{{package}} -- {{ARGS}}
 
-@start_db:
-  if [ "$(pg_ctl status | grep "is running")" ]; then \
+@_start_db:
+  if [ "$(pg_ctl status | grep "no server running")" = "" ]; then \
     echo "PG server already running."; \
   else \
     pg_ctl start -l $PGDATA/logfile -o --unix_socket_directories=$PWD/$PGDATA; \
   fi;
 
-@init_db:
-  if [ "$(pg_ctl status | grep "is running")" ]; then \
-    echo "PG server already initialized."; \
+@_init_db:
+  if [ "$(pg_ctl status)" ]; then \
+    just _start_db; \
   else \
-    mkdir -p $PGDATA; \
     pg_ctl init; \
-    just start_db; \
+    just _start_db; \
     sqlx database create; \
     sqlx migrate run --source ./crates/habiting-server/migrations; \
   fi;
