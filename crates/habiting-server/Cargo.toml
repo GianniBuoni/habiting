@@ -27,3 +27,4 @@ tonic-prost-build = {workspace = true}
 
 [dev-dependencies]
 anyhow = {workspace = true}
+chrono = "0.4.44"
