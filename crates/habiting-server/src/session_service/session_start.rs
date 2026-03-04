@@ -56,7 +56,6 @@ async fn validate_start(conn: impl PgExecutor<'_>, tag: &str) -> Result<(), Stat
 /// ended_at column.
 /// There should only be one active session available at a time.
 async fn validate_active_session(conn: impl PgExecutor<'_>, tag: &str) -> Result<(), Status> {
-    // Custom validation to ensure that no other session for this tag is active
     let validate = sqlx::query_scalar!("SELECT ended_at FROM sessions WHERE tag_id IN (SELECT uuid FROM tags WHERE name = $1) AND ended_at IS NULL", tag).fetch_all(conn).await.map_err(DbError::Sql)?;
 
     match validate.is_empty() {
@@ -93,7 +92,7 @@ mod tests {
                 // threre's not a great way to compare want values
                 // since time values are are handled by the database
                 assert!(got.is_ok(), "{tag}: {desc}");
-                break;
+                continue;
             }
             match got {
                 Ok(e) => panic!("{EXPECTED_ERROR} {e}, {tag}: {desc}"),
@@ -135,12 +134,13 @@ mod tests {
             let got = validate_start(&conn, tag).await;
             if should_ok {
                 assert!(got.is_ok(), "{tag}: {desc}");
-                break;
+                continue;
             }
             match got {
                 Ok(e) => panic!("{EXPECTED_ERROR} {e:?}, {tag}: {desc}"),
                 Err(e) => {
-                    let want = ClientError::EntryNotFound("tags".into(), tag.into()).to_string();
+                    let want = Status::from(ClientError::EntryNotFound("tags".into(), tag.into()))
+                        .to_string();
                     assert_eq!(want, e.to_string(), "{tag}: {desc}");
                 }
             }
@@ -155,7 +155,7 @@ mod tests {
             let got = validate_active_session(&conn, tag).await;
             if should_ok {
                 assert!(got.is_ok(), "{tag}: {desc}");
-                break;
+                continue;
             }
             match got {
                 Ok(e) => panic!("{EXPECTED_ERROR} {e:?}, {tag}: {desc}"),
