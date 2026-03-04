@@ -1,0 +1,22 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT uuid FROM sessions WHERE tag_id IN (SELECT uuid FROM tags WHERE name = $1) AND ended_at IS NULL",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "uuid",
+        "type_info": "Uuid"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "decba37db5163ca0cf24186b9b7cd9cf926c35ecc5c836efe07786907f64414f"
+}
