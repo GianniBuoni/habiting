@@ -2,7 +2,7 @@ syntax = "proto3";
 package habiting;
 
 message TagDeleteRequest {
-  repeated string name = 1;
+  repeated string names = 1;
 }
 
 message TagDeleteResponse {
