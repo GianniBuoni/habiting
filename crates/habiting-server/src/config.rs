@@ -38,6 +38,9 @@ impl DBConn {
     pub fn context() -> Duration {
         Duration::from_secs(10)
     }
+    pub fn get(&'static self) -> &'static PgPool {
+        &self.0
+    }
     /// Itinializes the database connections
     async fn try_init() -> Result<Self, Status> {
         let key = "DATABASE_URL";

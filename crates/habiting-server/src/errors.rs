@@ -1,8 +1,13 @@
 use tonic::Status;
 
 pub mod prelude {
+    #[cfg(test)]
+    pub use super::EXPECTED_ERROR;
     pub use super::ServerError;
 }
+
+#[cfg(test)]
+pub const EXPECTED_ERROR: &str = "Test expected error but returned";
 
 #[derive(thiserror::Error, Debug)]
 pub enum ServerError {
