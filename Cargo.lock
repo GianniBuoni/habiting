@@ -1892,7 +1892,7 @@ dependencies = [
 [[package]]
 name = "srvr_errors"
 version = "0.1.0"
-source = "git+https://github.com/GianniBuoni/srvr-errors.git#c8963691c63070b5128b1b9f9bb0951902a2192b"
+source = "git+https://github.com/GianniBuoni/srvr-errors.git#b3931e8b2201555d55e821e9bf7632556b290880"
 dependencies = [
  "sqlx",
  "thiserror",
