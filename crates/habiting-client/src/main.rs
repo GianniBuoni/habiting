@@ -1,7 +1,7 @@
 use clap::Parser;
 use habiting_client::prelude::*;
 
-fn main() {
+fn main() -> Result<(), ClientError> {
     let cli = Cli::parse();
 
     match cli.service {
@@ -12,4 +12,5 @@ fn main() {
             dbg!(tag_args);
         }
     }
+    Ok(())
 }

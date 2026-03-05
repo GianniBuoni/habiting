@@ -640,6 +640,7 @@ version = "0.1.0"
 dependencies = [
  "clap",
  "prost",
+ "thiserror",
  "tonic",
  "tonic-prost",
  "tonic-prost-build",
