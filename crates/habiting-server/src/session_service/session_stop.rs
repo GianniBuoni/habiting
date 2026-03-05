@@ -175,7 +175,7 @@ mod tests {
             }
             match got {
                 Ok(e) => panic!("{EXPECTED_ERROR} {e:?}, {desc}"),
-                Err(e) => continue,
+                Err(_) => continue,
             }
         }
         anyhow::Ok(())

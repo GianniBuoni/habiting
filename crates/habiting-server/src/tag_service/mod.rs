@@ -1,4 +1,3 @@
-#![allow(dead_code)]
 use crate::prelude::{
     habiting_proto::{
         TagCreateRequest, TagCreateResponse, TagDeleteRequest, TagDeleteResponse, TagListRequest,
@@ -13,6 +12,12 @@ mod tag_list;
 mod tag_row;
 mod tag_update;
 
+pub mod prelude {
+    pub use super::HabitingTagService;
+    pub use super::habiting_proto::tag_service_server::TagServiceServer;
+}
+
+#[derive(Default)]
 pub struct HabitingTagService {}
 
 #[tonic::async_trait]

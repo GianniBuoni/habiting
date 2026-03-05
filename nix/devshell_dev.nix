@@ -7,7 +7,10 @@ in {
       rust-analyzer
     ];
 
-    env = [(mkEnv "LOG_LEVEL" "info")];
+    env = [
+      (mkEnv "LOG_LEVEL" "info")
+      (mkEnv "HABITING_URI" "[::1]:50051")
+    ];
 
     git.hooks = {
       enable = true;

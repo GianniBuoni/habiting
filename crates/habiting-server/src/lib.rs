@@ -2,5 +2,5 @@ mod config;
 mod errors;
 mod logger;
 pub mod prelude;
-pub mod session_service;
+mod session_service;
 mod tag_service;
