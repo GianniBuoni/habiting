@@ -46,7 +46,7 @@ impl HabitingTagService {
 }
 
 async fn validate_targets(conn: impl PgExecutor<'_>, args: Arc<[String]>) -> Result<(), Status> {
-    let validate_targets = ArgumentsBuilder::new(args)
+    let validate_targets = Arguments::builder(args)
         .with_column(COLUMN)
         .with_table(TABLE)
         .with_task(TASK)
@@ -62,7 +62,7 @@ async fn validate_targets(conn: impl PgExecutor<'_>, args: Arc<[String]>) -> Res
 }
 
 async fn validate_new_names(conn: impl PgExecutor<'_>, args: Arc<[String]>) -> Result<(), Status> {
-    let validate_new_names = ArgumentsBuilder::new(args)
+    let validate_new_names = Arguments::builder(args)
         .with_table(TABLE)
         .with_column(COLUMN)
         .with_task(TASK)

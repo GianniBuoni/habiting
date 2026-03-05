@@ -45,7 +45,7 @@ impl HabitingSessionService {
 
 /// Use Argument valodator to make sure target tag exists.
 async fn validate_stop(conn: impl PgExecutor<'_>, tag: &str) -> Result<(), Status> {
-    let validate = ArgumentsBuilder::new([tag.into()].into())
+    let validate = Arguments::builder([tag.into()].into())
         .with_table("tags")
         .with_column("name")
         .with_task("session_stop")
@@ -53,6 +53,7 @@ async fn validate_stop(conn: impl PgExecutor<'_>, tag: &str) -> Result<(), Statu
 
     Ok(validate
         .try_check_empty_args()?
+        .try_check_repeated_args()?
         .try_check_entry_exists(conn)
         .await?)
 }
