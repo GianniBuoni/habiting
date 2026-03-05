@@ -4,7 +4,7 @@ package habiting;
 import "tag.proto";
 
 message TagCreateRequest {
-  repeated string name = 1;
+  repeated string names = 1;
 }
 
 message TagCreateResponse {

@@ -2,9 +2,9 @@ syntax = "proto3";
 package habiting;
 
 message TagDeleteRequest {
-  repeated string name = 1;
+  repeated string names = 1;
 }
 
 message TagDeleteResponse {
-  uint32 affected_rows = 1;
+  uint64 rows_affected = 1;
 }
