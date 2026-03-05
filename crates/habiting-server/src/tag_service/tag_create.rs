@@ -34,7 +34,7 @@ impl HabitingTagService {
 }
 
 async fn validate_create(conn: impl PgExecutor<'_>, args: Arc<[String]>) -> Result<(), Status> {
-    let validation = ArgumentsBuilder::new(args)
+    let validation = Arguments::builder(args)
         .with_table("tags")
         .with_column("name")
         .with_task("task_create")
