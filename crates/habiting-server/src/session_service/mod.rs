@@ -1,4 +1,3 @@
-#![allow(unused_variables)]
 use crate::prelude::{
     habiting_proto::{
         SessionStartRequest, SessionStartResponse, SessionStopRequest, SessionStopResponse,
@@ -10,6 +9,12 @@ use crate::prelude::{
 mod session_start;
 mod session_stop;
 
+pub mod prelude {
+    pub use super::HabitingSessionService;
+    pub use super::habiting_proto::session_service_server::SessionServiceServer;
+}
+
+#[derive(Default)]
 pub struct HabitingSessionService {}
 
 #[tonic::async_trait]
