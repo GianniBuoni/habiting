@@ -12,10 +12,20 @@ impl HabitingTagService {
         let req = req.into_inner();
         info!("{req:?}");
 
-        let _conn = Config::try_get().await?.db_conn.get();
-        let _args = Arc::<[String]>::from(req.names);
+        let conn = Config::try_get().await?.db_conn.get();
+        let args = Arc::<[String]>::from(req.names);
 
-        todo!()
+        let rows_affected = tokio::time::timeout(DBConn::context(), async {
+            let mut tx = conn.begin().await.map_err(DbError::Sql)?;
+            validate_delete(&mut *tx, args.clone()).await?;
+            let res = tag_delete(&mut *tx, args).await?;
+            tx.commit().await.map_err(DbError::Sql)?;
+            Ok::<u64, Status>(res)
+        })
+        .await
+        .map_err(|_| DbError::Context("user_delete"))??;
+
+        Ok(Response::new(TagDeleteResponse { rows_affected }))
     }
 }
 
