@@ -6,5 +6,5 @@ message TagDeleteRequest {
 }
 
 message TagDeleteResponse {
-  uint32 affected_rows = 1;
+  uint64 rows_affected = 1;
 }
