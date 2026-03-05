@@ -3,4 +3,5 @@ pub mod habiting_proto {
 }
 // internal prelude exports
 pub use super::cli::prelude::*;
+pub use super::config::prelude::*;
 pub use super::errors::prelude::*;
