@@ -15,9 +15,10 @@ pub struct Cli {
 #[derive(Debug, Subcommand)]
 pub enum Service {
     /// Manage current sessions
-    #[command(alias = "sesh")]
+    #[command(alias = "s")]
     Sessions(SessionArgs),
     /// Manage available session tags
+    #[command(alias = "t")]
     Tags(TagArgs),
 }
 
