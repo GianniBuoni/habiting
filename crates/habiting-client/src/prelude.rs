@@ -5,3 +5,4 @@ pub mod habiting_proto {
 pub use super::cli::prelude::*;
 pub use super::config::prelude::*;
 pub use super::errors::prelude::*;
+pub use super::session_service::prelude::*;

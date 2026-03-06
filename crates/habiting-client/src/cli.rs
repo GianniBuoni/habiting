@@ -1,7 +1,8 @@
 use clap::{Args, Parser, Subcommand};
 
 pub mod prelude {
-    pub use super::{Cli, Service};
+    pub(crate) use super::SessionActions;
+    pub use super::{Cli, Service, SessionArgs};
 }
 
 #[derive(Debug, Parser)]

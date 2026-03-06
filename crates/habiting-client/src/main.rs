@@ -7,7 +7,7 @@ async fn main() -> anyhow::Result<()> {
 
     match cli.service {
         Service::Sessions(session_args) => {
-            dbg!(session_args);
+            SessionService::handle_action(session_args.action).await?
         }
         Service::Tags(tag_args) => {
             dbg!(tag_args);
