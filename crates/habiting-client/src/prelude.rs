@@ -6,3 +6,4 @@ pub use super::cli::prelude::*;
 pub(crate) use super::config::prelude::*;
 pub(crate) use super::errors::prelude::*;
 pub use super::session_service::prelude::*;
+pub use super::tag_service::prelude::*;
