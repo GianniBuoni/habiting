@@ -2,6 +2,8 @@ use std::fmt::Display;
 
 use thiserror::Error;
 
+use crate::cli::UpdateArgs;
+
 pub mod prelude {
     pub use super::{ClientError, ServerError};
 }
@@ -16,6 +18,8 @@ pub enum ClientError {
     InvalidConfig(&'static str, String),
     #[error("Issue connecting to endpoint")]
     Connection(#[from] tonic::transport::Error),
+    #[error("Targets and new names must be of equal length:\n\nTargets:    {}\nNew names:  {}", .0.targets.join(", "), .0.new_names.join(", "))]
+    UnequalArgs(UpdateArgs),
 }
 
 #[derive(Debug, Error)]

@@ -1,8 +1,8 @@
 use clap::{Args, Parser, Subcommand};
 
 pub mod prelude {
-    pub(crate) use super::SessionActions;
-    pub use super::{Cli, Service, SessionArgs};
+    pub use super::{Cli, Service, SessionArgs, TagArgs};
+    pub(crate) use super::{SessionActions, TagActions};
 }
 
 #[derive(Debug, Parser)]
@@ -15,9 +15,10 @@ pub struct Cli {
 #[derive(Debug, Subcommand)]
 pub enum Service {
     /// Manage current sessions
-    #[command(alias = "sesh")]
+    #[command(alias = "s")]
     Sessions(SessionArgs),
     /// Manage available session tags
+    #[command(alias = "t")]
     Tags(TagArgs),
 }
 
