@@ -25,7 +25,6 @@ lint package="":
     cargo clippy -p habiting-{{package}} -- -D warnings; \
   fi
 
-[arg("package", short="p")]
 run package="server" *ARGS:
   cargo run -p habiting-{{package}} -- {{ARGS}}
 
