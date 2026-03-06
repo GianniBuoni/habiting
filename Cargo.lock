@@ -638,9 +638,11 @@ dependencies = [
 name = "habiting-client"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "clap",
  "prost",
  "thiserror",
+ "tokio",
  "tonic",
  "tonic-prost",
  "tonic-prost-build",
