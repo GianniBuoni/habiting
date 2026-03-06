@@ -1,8 +1,8 @@
 use clap::{Args, Parser, Subcommand};
 
 pub mod prelude {
-    pub(crate) use super::SessionActions;
-    pub use super::{Cli, Service, SessionArgs};
+    pub use super::{Cli, Service, SessionArgs, TagArgs};
+    pub(crate) use super::{SessionActions, TagActions};
 }
 
 #[derive(Debug, Parser)]
