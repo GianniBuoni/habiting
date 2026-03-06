@@ -1,7 +1,8 @@
 use clap::Parser;
 use habiting_client::prelude::*;
 
-fn main() -> Result<(), ClientError> {
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
 
     match cli.service {
